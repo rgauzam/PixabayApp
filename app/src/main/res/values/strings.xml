@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PixabayApp</string>
+
+    <string name="first_search">fruits</string>
+    <string name="details_next_dialog">Do you want to see the details of the image?</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+
+    <string name="start_search_text">fruits</string>
+
+</resources>
