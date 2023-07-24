@@ -1,4 +1,4 @@
-# PixabayApp - Image Viewer App from Pixabay API with Kotlin
+# PixabayApp - Image Viewer App from Pixabay API
 
 **Searching and displaying images from the Pixabay API in a user-friendly interface.**
 
