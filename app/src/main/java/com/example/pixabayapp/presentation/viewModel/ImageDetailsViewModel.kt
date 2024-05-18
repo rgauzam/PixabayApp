@@ -3,7 +3,10 @@ package com.example.pixabayapp.presentation.viewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.pixabayapp.data.repository.ImagesRepository
-import com.example.pixabayapp.presentation.uiState.ImageDetailsUiState
+import com.example.pixabayapp.presentation.uiState.DetailsUiState
+import com.example.pixabayapp.presentation.uiState.ItemDetailsUiState
+import com.example.pixabayapp.data.Outcome
+import com.example.pixabayapp.presentation.uiState.UIState
 import com.example.pixabayapp.presentation.view.screen.Nav.IMAGE_DETAILS_ID_PARAM
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -16,33 +19,45 @@ import javax.inject.Inject
 @HiltViewModel
 class ImageDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    imagesRepository: ImagesRepository
+    private val imagesRepository: ImagesRepository
 ) :
     ViewModel() {
 
     private val imageId: Int = checkNotNull(savedStateHandle[IMAGE_DETAILS_ID_PARAM])
 
-    private val _uiState: MutableStateFlow<ImageDetailsUiState?> = MutableStateFlow(null)
-    val uiState: StateFlow<ImageDetailsUiState?> = _uiState
+    private val _uiState: MutableStateFlow<DetailsUiState> =
+        MutableStateFlow(DetailsUiState(UIState.Loading))
+    val uiState: StateFlow<DetailsUiState?> = _uiState
 
     init {
-        CoroutineScope(Dispatchers.Default).launch {
-            try {
-                imagesRepository.getImageDetails(imageId)?.let {
-                    val uiState = ImageDetailsUiState(
-                        it.largeImageURL,
-                        it.user,
-                        it.tags,
-                        it.likes,
-                        it.downloads,
-                        it.comments
-                    )
-                    _uiState.value = uiState
-                }
-            } catch (e: Exception) {
-
-            }
-        }
+        loadItem()
     }
 
+    fun loadItem() {
+        CoroutineScope(Dispatchers.Default).launch {
+            imagesRepository.getImageDetails(imageId)
+                .collect { result ->
+                    when (result) {
+                        is Outcome.Success -> {
+                            val imageDetails = result.data.hits[0]
+                            val uiState = ItemDetailsUiState(
+                                imageDetails.largeImageURL,
+                                imageDetails.user,
+                                imageDetails.tags,
+                                imageDetails.likes,
+                                imageDetails.downloads,
+                                imageDetails.comments
+                            )
+                            _uiState.value = DetailsUiState(UIState.Success(uiState))
+                        }
+
+                        is Outcome.Error -> {
+                            _uiState.value = DetailsUiState(UIState.Error(result.error))
+                        }
+
+                    }
+                }
+        }
+    }
 }
+

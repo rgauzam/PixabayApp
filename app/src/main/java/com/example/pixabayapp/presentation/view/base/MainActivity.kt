@@ -22,9 +22,9 @@ import com.example.pixabayapp.presentation.view.screen.Nav.IMAGE_DETAILS_SCREEN_
 import com.example.pixabayapp.presentation.view.screen.Nav.SEARCH_IMAGES_SCREEN_ROUTE
 import com.example.pixabayapp.presentation.view.screen.Nav.SEARCH_TEXT_PARAM
 import com.example.pixabayapp.presentation.view.screen.SearchImagesScreen
+import com.example.pixabayapp.presentation.view.theme.PixabayAppTheme
 import com.example.pixabayapp.presentation.viewModel.ImageDetailsViewModel
 import com.example.pixabayapp.presentation.viewModel.SearchImagesViewModel
-import com.example.pixabayapp.presentation.view.theme.PixabayAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -69,7 +69,7 @@ private fun PixabayApp() {
             arguments = listOf(navArgument(IMAGE_DETAILS_ID_PARAM) { type = NavType.IntType })
         ) {
             val viewModel = hiltViewModel<ImageDetailsViewModel>()
-            ImageDetailsScreen(viewModel)
+            ImageDetailsScreen(viewModel, navController)
         }
     }
 

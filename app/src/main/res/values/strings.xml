@@ -1,11 +1,25 @@
 <resources>
-    <string name="app_name">PixabayApp</string>
-
     <string name="first_search">fruits</string>
+    <string name="details">Details</string>
     <string name="details_next_dialog">Do you want to see the details of the image?</string>
     <string name="yes">yes</string>
     <string name="no">no</string>
-
     <string name="start_search_text">fruits</string>
-
+    <string name="app_name">PixabayApp</string>
+    <string name="label_detailed_image">Detailed image</string>
+    <string name="label_name">User</string>
+    <string name="label_tags">Tags</string>
+    <string name="label_likes">Likes</string>
+    <string name="label_downloads">Downloads</string>
+    <string name="label_comments">Comments</string>
+    <string name="loading_indicator">Loading indicator</string>
+    <string name="error_message">Error: %1$s</string>
+    <string name="hint_search">Search...</string>
+    <string name="content_desc_clear_search">Clear search input</string>
+    <string name="content_desc_search">Search</string>
+    <string name="network_error_message">Network error occurred. Please check your internet connection and try again.</string>
+    <string name="server_error_message">Server error occurred. Please try again later.</string>
+    <string name="external_service_error_message">An error occurred with an external service. Please try again later.</string>
+    <string name="unknown_error_message">An unknown error occurred: %1$s</string>
+    <string name="retry">Try again.</string>
 </resources>

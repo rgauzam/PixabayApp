@@ -8,3 +8,4 @@ data class SearchImagesResponse(
     val totalHits: Int,
     val hits: List<ImageItem>
 )
+

@@ -1,6 +1,6 @@
 package com.example.pixabayapp.presentation.uiState
 
-data class ImageDetailsUiState(
+data class ItemDetailsUiState(
     val bigUrl: String,
     val userName: String,
     val tags: String,
