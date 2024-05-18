@@ -1,9 +1,9 @@
-# PixabayApp - Image Viewer App from Pixabay API
+**Future Improvements**
+Given more time, I would prioritize the following enhancements to this project:
 
-**Searching and displaying images from the Pixabay API in a user-friendly interface.**
+- Comprehensive Testing Suite:
 
-- Utilizes Dagger/Hilt for efficient dependency injection.
-- Implements Coil for smooth loading and caching of images.
-- Communicates with Pixabay web services using Ktor for seamless API integration.
-- Uses Compose views in Kotlin with Material Design3 for an intuitive and modern user interface.
-- Follows the Model-View-ViewModel (MVVM) architectural pattern for maintainability and separation of concerns.
+Implement a robust set of unit and integration tests to ensure the reliability and maintainability of the codebase. This would include:
+Thoroughly testing the ViewModel logic to ensure correct state transitions.
+Mocking dependencies to isolate unit tests and validate business logic independently.
+Writing UI tests to verify the correct rendering of UI components based on different UI states.
